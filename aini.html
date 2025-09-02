@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Data Diri</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet"> <!-- Import font Poppins -->
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script> <!-- Library ikon Feather -->
+
+  <link rel="stylesheet" href="dia 1.css"> <!--Link ke file CSS eksternal-->
+  <style>
+    #gatau {
+  max-width: 600px;                 /* Lebar maksimum hasil */
+  margin: 30px auto;                /* Tengah dan jarak dari atas */
+  background-color: #ffffff;        /* Latar putih */
+  border-left: 6px solid #6c63ff;   /* Garis warna di kiri */
+  padding: 20px 30px;               /* Padding dalam */
+  border-radius: 8px;               /* Sudut membulat */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Bayangan halus */
+  color: #333;                      /* Warna teks */
+}
+
+#gatau h2 {
+  margin-top: 0;                    /* Hilangkan margin atas */
+  color: #6c63ff;                   /* Warna judul biru */
+  font-size: 20px;                  /* Ukuran judul */
+  border-bottom: 1px solid #eee;    /* Garis bawah abu muda */
+  padding-bottom: 10px;             /* Jarak ke bawah */
+}
+
+#gatau p {
+  margin: 8px 0;                    /* Jarak atas dan bawah */
+  line-height: 1.5;                 /* Jarak antar baris */
+}
+
+  </style>
+  </head>
+<body>
+  <div class="container">
+    <h2>Form Data Diri</h2>
+    <form id="formSaya">
+      <div class="form-group">
+        <label for="nama">Nama Lengkap:</label>
+        <input type="text" id="nama" name="nama" placeholder="*Nur'aini Syarifah" required>
+      </div>
+
+      <div class="form-group">
+        <label for="tempat_tanggal_lahir">Tempat & Tanggal Lahir:</label>
+        <input type="text" id="tempat_tanggal_lahir" name="tempat_tanggal_lahir" placeholder="*Jakarta, 13 Januari 2008" required>
+      </div>
+
+      <div class="form-group">
+        <label for="umur">Umur:</label>
+        <input type="number" id="umur" name="umur" placeholder="*17 Tahun" min="1" max="70" required> Tahun
+      </div>
+
+      <div class="form-group">
+        <label for="alamat">Alamat:</label>
+        <textarea id="alamat" name="alamat" placeholder="*Jl. Rorotan IX" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="*ainisyrfh@gmail.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="nik">NIK:</label>
+        <input type="text" id="nik" name="nik" placeholder="*16 digit" minlength="16" maxlength="16" required>
+      </div>
+
+      <div>
+        <button type="submit">Kirim</button>
+      </div>
+    </form>
+
+    <div id="hasil"></div>
+  </div>
+
+  <script>
+    var yakin = confirm("Apakah Kamu Yakin Ingin Membuka Form di Page Ini?");
+    if (yakin) {
+      alert('Selamat Membuat Form Sendiri');
+    } else {
+      window.location = "https://www.detik.com"
+    }
+    
+    const form = document.getElementById("formSaya");
+    const hasilDiv = document.getElementById("hasil");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      const nama = document.getElementById("nama").value;
+      const ttl = document.getElementById("tempat_tanggal_lahir").value;
+      const umur = document.getElementById("umur").value;
+      const alamat = document.getElementById("alamat").value;
+      const email = document.getElementById("email").value;
+      const nik = document.getElementById("nik").value;
+      
+      hasilDiv.innerHTML = `
+        <h3>Data Telah di Isi :</h3>
+        <p><b>Nama Lengkap:</b> ${nama}</p>
+        <p><b>Tempat & Tanggal Lahir:</b> ${ttl}</p>
+        <p><b>Umur:</b> ${umur} Tahun</p>
+        <p><b>Alamat:</b> ${alamat}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>NIK:</b> ${nik}</p>
+      `;
+
+      hasilDiv.style.display = "block";
+    });
+  </script>
+</body>
+</html>
